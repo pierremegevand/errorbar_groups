@@ -241,23 +241,6 @@ if any(any(errorbar_lower~=0))||any(any(errorbar_upper~=0))
         end
     end
     
-    for grp=1:N_grps
-        if verLessThan('matlab', '8.4.0')
-            he_xdata=get(he_c{grp}(2),'XData');
-        else
-            he_xdata=get(he(grp), 'XData');
-        end
-        he_xdata(4:9:end)=he_xdata(1:9:end)-errorbar_width*bar_width/2;
-        he_xdata(7:9:end)=he_xdata(1:9:end)-errorbar_width*bar_width/2;
-        he_xdata(5:9:end)=he_xdata(1:9:end)+errorbar_width*bar_width/2;
-        he_xdata(8:9:end)=he_xdata(1:9:end)+errorbar_width*bar_width/2;
-        if verLessThan('matlab', '8.4.0')
-            set(he_c{grp}(2),'XData',he_xdata);
-        else
-            set(he(grp),'XData',he_xdata);
-        end
-    end
-    
 end
 
 % set the x tick labels
